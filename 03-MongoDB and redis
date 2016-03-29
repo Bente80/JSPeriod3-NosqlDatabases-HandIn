@@ -1,0 +1,79 @@
+03.	Explain how databases like MongoDB and redis would be classified in the NoSQL world.
+
+In short terms:
+* MongoDB is a Document storage type of NoSQL database.
+* Where as Redis is an in-memory persistent key-value storage type of NoSQL database.
+
+In longer terms:
+* MongoDB stores data using a flexible document data model that is similar to JSON. Documents contain one or more fields, including arrays,
+  binary data and sub-documents. Fields can vary from document to document. This flexibility allows development teams to evolve the data model
+  rapidly as their application requirements change. When you need to lock down your data model, optional document validation enforces the rules
+  you choose.
+  MongoDB stores data using aggregates (a collection of objects we wish to treat as a unit), and can see structure within the whole ore
+  specific parts of the aggregate.
+
+* Redis (REmote DIctionary Server) is primarily constructed of aggregates (a collection of objects we wish to treat as a unit). At its core,
+  every one of Redis’ five data structures has at least a key and a value.
+
+The Key or ID is used to access the data/ identify pieces of data.
+Keys can contain "advanced" structures such as: Strings, Hashes, Lists, Sets ore Sorted sets.
+
+Strings are binary safe, which means that it can contain any kind of data, for instance a JPEG image or a serialized Ruby object. Strings are
+more powerful than they initially seem. They are used for storing objects (complex or not) and counters. Also, since getting a value by key is
+so fast, strings are often used to cache data.
+    Ex:     set users:leto '{"name": leto, "planet": dune, "likes": ["spice"]}'
+
+Hashes are maps between string fields and string values, so they are the perfect data type to represent objects (eg: A User with a number of
+fields like name, surname, age, and so forth). Unlike Redis strings, Hashes provide an extra level of indirection: a field. The benefit would
+be the ability to pull and update/delete specific pieces of data, without having to get or write the entire value.
+
+    Ex:          hmset users:goku race saiyan age 737 	Sets multiple fields at once
+                 hmget users:goku race powerlevel 	    Get multiple fields at once
+                 hgetall users:goku 			        Get all fields and values
+                 hkeys users:goku 			            List all the fields
+                 hdel users:goku age		            Delete a specific field
+
+Lists let you store and manipulate an array of values for a given key. You can add values to the list, get the first or last value and
+manipulate values at a given index. Lists maintain their order and have efficient index-based operations. Of course, lists aren’t only good for
+storing references to other keys. The values can be anything. You could use lists to store logs or track the path a user is taking through a site.
+
+    Ex:          lpush newusers goku 		Push a new user at the front of the list, and then
+                 ltrim newusers 0 49 		trims it so that it only contains the last 50 users
+
+Sets are used to store unique values and provide a number of set-based operations, like unions. Sets aren’t ordered but they provide efficient
+value-based operations.
+Sets are great for tagging or tracking any other properties of a value for which duplicates don’t make any sense (or where we want to apply set
+operations such as intersections and unions).
+
+    Ex:          sadd friends:leto ghanima paul chani Jessica	Set of friends of leto
+                 sadd friends:duncan paul jessica alia	        Set of friends of ducan
+       Regardless of how many friends a user has, we can efficiently tell (O(1)) whether userX is a friend of userY or not:
+                 sismember friends:leto jessica
+                 sismember friends:leto Vladimir
+                 sinter friends:leto friends:Duncan                             We can see whether two or more people share the same friends.
+                 sinterstore friends:leto_duncan friends:leto friends:duncan	Stores the result at a new key.
+
+Sorted sets are the most powerful data structure. Sorted sets are like sets with a score. The score provides sorting and ranking capabilities.
+The most obvious use-case for sorted sets is a leaderboard system. In reality though, anything you want sorted by some integer, and be able to
+efficiently manipulate based on that score, might be a good fit for a sorted set.
+
+    Ex:       zadd friends:duncan 70 ghanima 95 paul 95 chani 75 jessica 1 vladimir  	           A ranked list of friends.
+              zcount friends:duncan 90 100	                 Shows how many friends duncan has with a score of 90 or over.
+              zrevrank friends:duncan chani	                 Shows chain´s rank.
+
+Redis allows you to mark a key for expiration. You can give it an absolute time in the form of a Unix timestamp (seconds since January 1, 1970)
+or a time to live in seconds. This is a key-based command, so it doesn’t matter what type of data structure the key represents.
+
+Values represent the actual data associated with the key in Redis. They can be anything. Sometimes you’ll store strings, sometimes integers,
+sometimes you’ll store serialized objects (in JSON, XML or some other format). For the most part, Redis treats values as a byte array and doesn’t
+care what they are. Note that different drivers handle serialization differently (some leave it up to you).
+
+The Redis database cannot see structure within the aggregate and doesn’t allow you to query an object’s values.
+
+Redis is known for being extremely fast. This is due to its specialized data structures. Redis’ performance tends to be measured in tens of
+thousands, or hundreds of thousands of operations per second.
+
+Links:  https: www.mongodb.com/what-is-mongodb
+        https://www.mongodb.com/document-databases  (A good link too, with advantages on document st.)
+        http://js2016.azurewebsites.net/redis/redis.html#10
+        http://openmymind.net/redis.pdf

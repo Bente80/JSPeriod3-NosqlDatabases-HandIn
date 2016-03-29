@@ -1,0 +1,22 @@
+Period-3 NoSQL MongoDB + mongoose and Redis.
+
+By Bente Andersen
+
+This file is meant to give you an overview of this hand in. I will make one file for each question, but the example
+code for this hand in will mostly come from three different git-hub repositories I have made. I will link to these
+through here, and tell you where to look for what in each question.
+I have put in examples of the code in some of the questions, but they won´t work here. In order to look how it works,
+you need to go to the repositories below.
+
+The repositories are named:
+
+JSPeriod3Mean1          -   https://github.com/Bente80/JSPeriod3Mean1
+* This project is my solution to the questions found in MongoEx-1.pdf (0.1) found on Fronter.
+
+JSPeriod3RedisSession   -	https://github.com/Bente80/JSPeriod3RedisSession
+JSPEriod3Redish.        -   https://github.com/Bente80/JSPeriod3Redis
+* These projects are my solution to the questions found in Redis as a Session Store.pdf found on Fronter.
+
+The sources I have used for this project is written in each question.
+
+

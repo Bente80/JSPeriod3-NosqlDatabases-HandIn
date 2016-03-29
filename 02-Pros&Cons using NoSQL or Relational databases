@@ -1,0 +1,48 @@
+02.	Explain Pros & Cons in using a NoSQL database like MongoDB as your data store, compared to a traditional Relational SQL Database like MySQL.
+
+No SQL databases like MongoDB & Redis:
+
++ Support large volumes of data, by running on clusters.
++ Gains simplicity of design and control over availability.
++ Easy to gain acces to information about an object, &
++ Makes some operations faster, due to the way data is structured in a NoSQL databases (e.g. key-value, wide column, graph, or document).
++ More flexible, because there are different kind of databases depending on what problem it must solve for the client.
+- Most NoSQL stores lack true ACID transactions.
+- Eventual consistency. NoSQL databases takes a while to update, and therefore queries for data might not return updated data immediately
+  or might result in reading data that is not accurate.
+
+Relational databases:
+
++ Different kinds of data are divided and repiting data like zip codes are avoided.
++/- Joins can be made here, but this can also make it difficult to gain acces about something on an object, because    you have to go through
+    a lot of joins to get the information you want.
+   (Difficult to gain acces to object data)
++ Ease of use: The revision of any information as tables consisting of rows and columns is easy to understand.
++ Flexibility: Different tables from which information has to be linked and extracted can be easily manipulated by operators such as project
+  and join to give information in the form in which it is desired.
++ Precision: The usage of relational algebra and relational calculus in the manipulation of the relations between the tables ensures that there
+  is no ambiguity, which may otherwise arise in establishing the linkages in a complicated network type database.
++ Security: Security control and authorization can also be implemented more easily by moving sensitive attributes in a given table into a
+  separate relation with its own authorization controls. If authorization requirement permits, a particular attribute could be joined back with
+  others to enable full information retrieval.
++ Data Independence: Data independence is achieved more easily with normalization structure used in a relational database than in the more
+  complicated tree or network structure.
+- Performance: A major constraint and therefore disadvantage in the use of relational database system is machine performance. If the number of
+  tables between which relationships to be established are large and the tables themselves effect the performance in responding to the sql
+  queries.
+- Physical Storage Consumption:With an interactive system, for example an operation like join would depend upon the physical storage also.
+  It is, therefore common in relational databases to tune the databases and in such a case the physical data layout would be chosen so as to
+  give good performance in the most frequently run operations. It therefore would naturally result in the fact that the lays frequently run
+  operations would tend to become even more shared.
+- Slow extraction of meaning from data:  if the data is naturally organized in a hierarchical manner and stored as such, the hierarchical
+  approach may give quick meaning for that data.
+- Takes up a lot of space.
+
+For both:
+-	For distributed transaction processing across multiple databases, data consistency is an even bigger challenge that is difficult for both
+    NoSQL and relational databases.
+
+Links:  https://en.wikipedia.org/wiki/NoSQL
+        http://maxlogix.blogspot.ch/2009/09/advantages-and-disadvantages-of-using.html
+        http://js2016.azurewebsites.net/mongoDB/mongo.html#4
+        http://smhamiri.blogspot.ch/2013/04/advantage-disadvantage-of-relational.html (Also a good link)

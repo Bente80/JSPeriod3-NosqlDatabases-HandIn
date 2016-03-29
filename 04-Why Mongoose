@@ -1,0 +1,28 @@
+04.	Explain reasons to add a layer like Mongoose, on top on of a schema-less database like MongoDB.
+
+The reasons for using a layer like Mongoose, on top on of a schema-less database like MongoDB could be:
+o	Real life data has (often) structure.
+o	Real life data has (often) types.
+o	We want to do more with less work ;-)
+
+Another reason is, that Mongoose allows us to have access the MongoDB commands for CRUD simply and easily.
+
+Futhermore Mongoose offers more functionality (one of them is being an ODM (Object Document Mapping)).
+
+Mongoose also adds in some necessary data manipulation functions and it works as a layer to be used for
+future additions (plugins) , rather than messing with the source of MongoDB itself.
+
+With mongoose, you also got update, delete, validation framework, support for custom middleware etc.
+
+By using Mongoose you also avoid dealing with deep callback structures.
+
+Futhermore Mongoose provides a way to refer one collection from another (kind of like join between two tables  in SQL).
+(Mongoose Query Population v4.4.3.)
+This is very helpful if you don't want put all your data into a single collection.
+
+Mongoose also has pre save and post save hooks to do something before and after you save a model. Pre-save hook can be
+used to simulate 'cascade on delete'  in Mongodb.
+
+Links: 	http://js2016.azurewebsites.net/mongoose/mongoose.html#3
+        https://www.quora.com/Node-js/Whats-the-advantages-of-using-MongoDB-Mongoose
+

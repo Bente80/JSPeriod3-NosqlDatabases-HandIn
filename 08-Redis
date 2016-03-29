@@ -1,0 +1,18 @@
+08.	Explain how redis "fits" into the NoSQL world, and provide an example of how to use it.
+
+See question 3, for the answer to this.
+
+Example:
+
+This is the basic anatomy of a Redis command. First we have the actual command, in this case set. Next we have its parameters.
+The set command takes two parameters: the key we are setting and the value we are setting it to. Many, but not all, commands take a key
+(and when they do, it’s often the first parameter).
+
+set users:leto '{"name": "leto", "planet": "dune", "likes": ["spice"]}'
+
+This is how to retrieve this value:
+
+get users:leto
+
+For an example in webstorm look at my own project: JSPEriod3Redish.
+Here is the link to the code: https://github.com/Bente80/JSPeriod3Redis
